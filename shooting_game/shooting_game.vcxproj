@@ -113,6 +113,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Common\GameObject\GameObject.cpp" />
+    <ClCompile Include="Sources\Common\SceneBase\SceneBase.cpp" />
     <ClCompile Include="Sources\Main.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -212,6 +214,8 @@
     <None Include="App\engine\soundfont\GMGSx.sf2.zstdcmp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\Common\GameObject\GameObject.h" />
+    <ClInclude Include="Sources\Common\SceneBase\SceneBase.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
