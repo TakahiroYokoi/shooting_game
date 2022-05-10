@@ -57,6 +57,15 @@
     <Filter Include="Resources\engine\texture\box-shadow">
       <UniqueIdentifier>{8c8c80fe-a6dc-452d-b92d-fbb22ec16326}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Common">
+      <UniqueIdentifier>{78216754-fad8-4b62-908c-041a94607274}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Common\SceneBase">
+      <UniqueIdentifier>{a964bf23-584c-48d8-89cf-c617b423b2ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Common\GameObject">
+      <UniqueIdentifier>{a0392eae-fa50-4290-813f-db867973f557}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -64,6 +73,12 @@
     </ClCompile>
     <ClCompile Include="Sources\Main.cpp">
       <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Common\SceneBase\SceneBase.cpp">
+      <Filter>Sources\Common\SceneBase</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Common\GameObject\GameObject.cpp">
+      <Filter>Sources\Common\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -327,6 +342,12 @@
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Common\SceneBase\SceneBase.h">
+      <Filter>Sources\Common\SceneBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Common\GameObject\GameObject.h">
+      <Filter>Sources\Common\GameObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
