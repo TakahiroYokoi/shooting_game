@@ -1,7 +1,6 @@
 ﻿#include <Siv3D.hpp>
 
 #include "Common/SceneBase/SceneBase.h"
-#include "TestScene.h"
 
 void Main()
 {
