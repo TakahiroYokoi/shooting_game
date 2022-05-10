@@ -1,0 +1,2 @@
+*.vsproj.filter merge=union
+*.vsproj merge=union
