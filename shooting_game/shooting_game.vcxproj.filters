@@ -66,6 +66,18 @@
     <Filter Include="Sources\Common\GameObject">
       <UniqueIdentifier>{a0392eae-fa50-4290-813f-db867973f557}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Game">
+      <UniqueIdentifier>{58fc68c0-0e7b-4583-b02a-cbe5fa863ef1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Game\Player">
+      <UniqueIdentifier>{c1c81306-7a64-4337-ba3b-ffb0f056a235}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Game\Scenes">
+      <UniqueIdentifier>{f518b0ff-3705-4e29-bfa0-9894379b332a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Game\Scenes\GameScene">
+      <UniqueIdentifier>{6f9a46c7-d375-4723-8897-617c7350ca6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -79,6 +91,12 @@
     </ClCompile>
     <ClCompile Include="Sources\Common\GameObject\GameObject.cpp">
       <Filter>Sources\Common\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Game\Player\Player.cpp">
+      <Filter>Sources\Game\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Game\Scenes\GameScene\GameScene.cpp">
+      <Filter>Sources\Game\Scenes\GameScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -348,6 +366,12 @@
     </ClInclude>
     <ClInclude Include="Sources\Common\GameObject\GameObject.h">
       <Filter>Sources\Common\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Player\Player.h">
+      <Filter>Sources\Game\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Scenes\GameScene\GameScene.h">
+      <Filter>Sources\Game\Scenes\GameScene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

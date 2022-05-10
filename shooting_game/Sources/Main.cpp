@@ -1,6 +1,7 @@
 ﻿#include <Siv3D.hpp>
 
 #include "Common/SceneBase/SceneBase.h"
+#include "Game/Scenes/GameScene/GameScene.h"
 
 void Main()
 {
@@ -27,8 +28,8 @@ void Main()
     Window::Resize(monitorSize);
 
     TSceneManager sceneManager;
-    sceneManager
-        // .add<SceneClass>("SceneName")
+	sceneManager
+		.add<GameScene>("GameScene")
         .setFadeColor(ColorF{ 1. });
 
     while (System::Update())
