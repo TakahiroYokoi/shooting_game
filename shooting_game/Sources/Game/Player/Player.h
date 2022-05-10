@@ -5,9 +5,9 @@
 class Player : public GameObject
 {
 public:
-	virtual bool Init(Vec2 position) override;
-	virtual void Update(float deltaTime) override;
-	virtual void Draw() override;
+    virtual bool Init(Vec2 position) override;
+    virtual void Update(float deltaTime) override;
+    virtual void Draw() override;
 
 private:
     // プレイヤーの移動スピード

@@ -28,8 +28,8 @@ void Main()
     Window::Resize(monitorSize);
 
     TSceneManager sceneManager;
-	sceneManager
-		.add<GameScene>("GameScene")
+    sceneManager
+        .add<GameScene>("GameScene")
         .setFadeColor(ColorF{ 1. });
 
     while (System::Update())
