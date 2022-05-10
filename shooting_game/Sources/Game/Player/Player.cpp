@@ -67,12 +67,5 @@ void Player::Move(float deltaTime)
             _position->x = Window::GetState().virtualSize.x - _size;
         }
     }
-    // x,yベクトルそれぞれの移動量とプレイヤーの座標表示
-    // デバッグ用
-    /*
-    ClearPrint();
-    Print << move.normalized();
-    Print << _position;
-    */
 }
 
