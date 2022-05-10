@@ -4,6 +4,6 @@
 class GameScene : public SceneBase
 {
 public:
-	GameScene(const InitData& init);
+    GameScene(const InitData& init);
 };
 

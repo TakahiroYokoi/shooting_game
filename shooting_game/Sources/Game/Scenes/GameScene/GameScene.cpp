@@ -2,8 +2,8 @@
 #include "../../Player/Player.h"
 
 GameScene::GameScene(const InitData& init):
-	SceneBase(init)
+    SceneBase(init)
 {
-	Player* player = new Player();
-	Instantiate(player, Vec2(100, 100));
+    Player* player = new Player();
+    Instantiate(player, Vec2(100, 100));
 }
