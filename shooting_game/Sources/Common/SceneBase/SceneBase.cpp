@@ -2,7 +2,7 @@
 
 #include <Siv3D/Scene.hpp>
 #include <Siv3D/Vector2D.hpp>
-#include "../GameObject/GameObject.h"
+#include "Common/GameObject/GameObject.h"
 
 using namespace std;
 

@@ -1,5 +1,5 @@
 ﻿#include "GameScene.h"
-#include "../../Player/Player.h"
+#include "Game/Player/Player.h"
 
 GameScene::GameScene(const InitData& init):
     SceneBase(init)

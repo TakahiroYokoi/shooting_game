@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <Siv3D.hpp>
-#include "../../Common/GameObject/GameObject.h"
+#include "Common/GameObject/GameObject.h"
 
 class Player : public GameObject
 {
