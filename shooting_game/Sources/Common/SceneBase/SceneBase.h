@@ -20,18 +20,22 @@ public:
     /// </summary>
     /// <param name="init">共有データ</param>
     SceneBase(const InitData& init);
+    /// <summary>
+    /// デストラクタ
+    /// </summary>
+    ~SceneBase();
 
     /// <summary>
     /// オブジェクトを生成
     /// </summary>
     /// <param name="gameObject">生成するオブジェクト</param>
     /// <param name="position">初期座標</param>
-    virtual void Instantiate(GameObject* gameObject, Vec2 position) final;
+    static void Instantiate(GameObject* gameObject, Vec2 position);
     /// <summary>
     /// 生成されてるオブジェクトを削除
     /// </summary>
     /// <param name="gameObject">削除するオブジェクト</param>
-    virtual void Destroy(GameObject* gameObject) final;
+    static void Destroy(GameObject* gameObject);
 
 protected:
 
@@ -52,7 +56,7 @@ private:
 
 private:
 
-    std::list<GameObject*>* _objectList;
+    inline static std::list<GameObject*>* _objectList = nullptr;
 
 private:
 
