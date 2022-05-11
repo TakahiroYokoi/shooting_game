@@ -7,9 +7,17 @@
 using namespace std;
 
 SceneBase::SceneBase(const InitData& init) :
-    Base(init),
-    _objectList(new list<GameObject*>())
+    Base(init)
 {
+    if (_objectList == nullptr)
+    {
+        _objectList = new list<GameObject*>();
+    }
+}
+
+SceneBase::~SceneBase()
+{
+    _objectList->clear();
 }
 
 void SceneBase::Instantiate(GameObject* gameObject, Vec2 position)
