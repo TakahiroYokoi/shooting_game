@@ -1,4 +1,4 @@
-#include "SceneBase.h"
+﻿#include "SceneBase.h"
 
 #include <Siv3D/Scene.hpp>
 #include <Siv3D/Vector2D.hpp>
