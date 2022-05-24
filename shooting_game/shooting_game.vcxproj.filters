@@ -78,6 +78,9 @@
     <Filter Include="Sources\Game\Scenes\GameScene">
       <UniqueIdentifier>{6f9a46c7-d375-4723-8897-617c7350ca6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Game\Bullet">
+      <UniqueIdentifier>{c60865ba-add2-459d-b9df-ba2ecd70cd14}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -97,6 +100,9 @@
     </ClCompile>
     <ClCompile Include="Sources\Game\Scenes\GameScene\GameScene.cpp">
       <Filter>Sources\Game\Scenes\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Game\Bullet\Bullet.cpp">
+      <Filter>Sources\Game\Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -372,6 +378,9 @@
     </ClInclude>
     <ClInclude Include="Sources\Game\Scenes\GameScene\GameScene.h">
       <Filter>Sources\Game\Scenes\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Bullet\Bullet.h">
+      <Filter>Sources\Game\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

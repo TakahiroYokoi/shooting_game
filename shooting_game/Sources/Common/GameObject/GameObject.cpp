@@ -1,4 +1,4 @@
-#include "GameObject.h"
+﻿#include "GameObject.h"
 
 GameObject::GameObject():
     _position(new Vec2(0.0f, 0.0f)),

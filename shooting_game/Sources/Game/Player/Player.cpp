@@ -1,4 +1,6 @@
 ﻿#include "Player.h"
+#include "Game/Bullet/Bullet.h"
+#include "Game/Scenes/GameScene/GameScene.h"
 
 bool Player::Init(Vec2 position)
 {
@@ -23,6 +25,7 @@ void Player::Move(float deltaTime)
 {
     Vec2 move = Vec2::Zero();
     bool isMove = false;
+    static double coolTime;
     // キーが押されたとき
     if (KeyUp.pressed())
     {
@@ -44,10 +47,20 @@ void Player::Move(float deltaTime)
         move.x = 1;
         isMove = true;
     }
+    if (KeyZ.pressed() && coolTime <= 0)
+    {
+        coolTime = kShotCoolTime;
+        Bullet* bullet = new Bullet();
+        GameScene::Instantiate(bullet,*_position);
+    }
+    if (coolTime > 0)
+    {
+        coolTime -= Scene::DeltaTime();
+    }
     // プレイヤーが動いてるとき
     if (isMove)
     {
-        // 移動量を均一に
+        // プレイヤー移動
         *_position += move.normalized() * kSpeed * deltaTime;
         // 画面外に出ないように
         if (_position->y <= _size)

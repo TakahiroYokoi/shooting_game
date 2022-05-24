@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <Siv3D/SceneManager.hpp>
 #include <list>
@@ -16,38 +16,38 @@ class SceneBase : public TSceneManager::Scene
 public:
 
     /// <summary>
-    /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+    /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
     /// </summary>
-    /// <param name="init">‹¤—Lƒf[ƒ^</param>
+    /// <param name="init">å…±æœ‰ãƒ‡ãƒ¼ã‚¿</param>
     SceneBase(const InitData& init);
     /// <summary>
-    /// ƒfƒXƒgƒ‰ƒNƒ^
+    /// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
     /// </summary>
     ~SceneBase();
 
     /// <summary>
-    /// ƒIƒuƒWƒFƒNƒg‚ğ¶¬
+    /// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆ
     /// </summary>
-    /// <param name="gameObject">¶¬‚·‚éƒIƒuƒWƒFƒNƒg</param>
-    /// <param name="position">‰ŠúÀ•W</param>
+    /// <param name="gameObject">ç”Ÿæˆã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</param>
+    /// <param name="position">åˆæœŸåº§æ¨™</param>
     static void Instantiate(GameObject* gameObject, Vec2 position);
     /// <summary>
-    /// ¶¬‚³‚ê‚Ä‚éƒIƒuƒWƒFƒNƒg‚ğíœ
+    /// ç”Ÿæˆã•ã‚Œã¦ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤
     /// </summary>
-    /// <param name="gameObject">íœ‚·‚éƒIƒuƒWƒFƒNƒg</param>
+    /// <param name="gameObject">å‰Šé™¤ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</param>
     static void Destroy(GameObject* gameObject);
 
 protected:
 
     /// <summary>
-    /// XVˆ—
+    /// æ›´æ–°å‡¦ç†
     /// </summary>
-    /// <param name="deltaTime">‘OƒtƒŒ[ƒ€‚©‚ç‚ÌŒo‰ßŠÔ</param>
+    /// <param name="deltaTime">å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã‹ã‚‰ã®çµŒéæ™‚é–“</param>
     virtual void Update(float deltaTime);
     /// <summary>
-    /// XVˆ—
+    /// æ›´æ–°å‡¦ç†
     /// </summary>
-    /// <param name="deltaTime">‘OƒtƒŒ[ƒ€‚©‚ç‚ÌŒo‰ßŠÔ</param>
+    /// <param name="deltaTime">å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã‹ã‚‰ã®çµŒéæ™‚é–“</param>
     virtual void LateUpdate(float deltaTime);
 
 private:
@@ -57,9 +57,12 @@ private:
 private:
 
     inline static std::list<GameObject*>* _objectList = nullptr;
+    inline static std::list<GameObject*>* _destroyList = nullptr;
 
 private:
 
     virtual void update() override;
     virtual void draw() const override;
+
+    virtual void DestroyObjects() final;
 };

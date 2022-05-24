@@ -2,18 +2,16 @@
 #include <Siv3D.hpp>
 #include "Common/GameObject/GameObject.h"
 
-class Player : public GameObject
+class Bullet : public GameObject
 {
 public:
     virtual bool Init(Vec2 position) override;
     virtual void Update(float deltaTime) override;
     virtual void Draw() override;
-
 private:
-    // プレイヤーの移動スピード
-    const float kSpeed = 500.f;
-    const float kShotCoolTime = 0.5f;
-    // プレイヤーのサイズ
-    float _size = 10.f;
+    // 弾の移動スピード
+    const float kSpeed = 1000.f;
+    // 弾のサイズ
+    float _size = 5.f;
     void Move(float deltaTime);
 };
