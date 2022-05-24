@@ -57,9 +57,12 @@ private:
 private:
 
     inline static std::list<GameObject*>* _objectList = nullptr;
+    inline static std::list<GameObject*>* _destroyList = nullptr;
 
 private:
 
     virtual void update() override;
     virtual void draw() const override;
+
+    virtual void DestroyObjects() final;
 };
