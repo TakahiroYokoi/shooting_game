@@ -1,15 +1,31 @@
-#include "SceneBase.h"
+﻿#include "SceneBase.h"
 
 #include <Siv3D/Scene.hpp>
 #include <Siv3D/Vector2D.hpp>
-#include "../GameObject/GameObject.h"
+#include "Common/GameObject/GameObject.h"
 
 using namespace std;
 
 SceneBase::SceneBase(const InitData& init) :
-    Base(init),
-    _objectList(new list<GameObject*>())
+    Base(init)
 {
+    if (_objectList == nullptr)
+    {
+        _objectList = new list<GameObject*>();
+    }
+    if (_destroyList == nullptr)
+    {
+        _destroyList = new list<GameObject*>();
+    }
+}
+
+SceneBase::~SceneBase()
+{
+    _objectList->clear();
+    _destroyList->clear();
+
+    delete _objectList;
+    delete _destroyList;
 }
 
 void SceneBase::Instantiate(GameObject* gameObject, Vec2 position)
@@ -20,8 +36,7 @@ void SceneBase::Instantiate(GameObject* gameObject, Vec2 position)
 
 void SceneBase::Destroy(GameObject* gameObject)
 {
-    _objectList->remove(gameObject);
-    gameObject->OnDestroy();
+    _destroyList->push_back(gameObject);
 }
 
 void SceneBase::Update(float deltaTime)
@@ -49,6 +64,7 @@ void SceneBase::update()
         });
 
     LateUpdate(deltaTime);
+    DestroyObjects();
 }
 
 void SceneBase::draw() const
@@ -59,4 +75,14 @@ void SceneBase::draw() const
                 object->Draw();
             }
         });
+}
+
+void SceneBase::DestroyObjects()
+{
+    for_each(_destroyList->begin(), _destroyList->end(), [](GameObject* object) {
+            _objectList->remove(object);
+            object->OnDestroy();
+        });
+
+    _destroyList->clear();
 }

@@ -1,4 +1,6 @@
 ﻿#include "Player.h"
+#include "Game/Bullet/Bullet.h"
+#include "Game/Scenes/GameScene/GameScene.h"
 
 bool Player::Init(Vec2 position)
 {
@@ -22,7 +24,9 @@ void Player::Draw()
 void Player::Move(float deltaTime)
 {
     Vec2 move = Vec2::Zero();
+    Vec2 virtualSize = Window::GetState().virtualSize;
     bool isMove = false;
+    static double coolTime;
     // キーが押されたとき
     if (KeyUp.pressed())
     {
@@ -44,10 +48,20 @@ void Player::Move(float deltaTime)
         move.x = 1;
         isMove = true;
     }
+    if (KeyZ.pressed() && coolTime <= 0)
+    {
+        coolTime = kShotCoolTime;
+        Bullet* bullet = new Bullet();
+        GameScene::Instantiate(bullet,*_position);
+    }
+    if (coolTime > 0)
+    {
+        coolTime -= deltaTime;
+    }
     // プレイヤーが動いてるとき
     if (isMove)
     {
-        // 移動量を均一に
+        // プレイヤー移動
         *_position += move.normalized() * kSpeed * deltaTime;
         // 画面外に出ないように
         if (_position->y <= _size)
@@ -58,13 +72,13 @@ void Player::Move(float deltaTime)
         {
             _position->x = _size;
         }
-        if (_position->y >= Window::GetState().virtualSize.y - _size)
+        if (_position->y >= virtualSize.y - _size)
         {
-            _position->y = Window::GetState().virtualSize.y - _size;
+            _position->y = virtualSize.y - _size;
         }
-        if (_position->x >= Window::GetState().virtualSize.x - _size)
+        if (_position->x >= virtualSize.x - _size)
         {
-            _position->x = Window::GetState().virtualSize.x - _size;
+            _position->x = virtualSize.x - _size;
         }
     }
 }
