@@ -117,6 +117,8 @@
     <ClCompile Include="Sources\Common\GameObject\GameObject.cpp" />
     <ClCompile Include="Sources\Common\SceneBase\SceneBase.cpp" />
     <ClCompile Include="Sources\Game\Bullet\Bullet.cpp" />
+    <ClCompile Include="Sources\Game\Enemy\EnemyA.cpp" />
+    <ClCompile Include="Sources\Game\Enemy\EnemyManager.cpp" />
     <ClCompile Include="Sources\Game\Player\Player.cpp" />
     <ClCompile Include="Sources\Game\Scenes\GameScene\GameScene.cpp" />
     <ClCompile Include="Sources\Main.cpp" />
@@ -221,6 +223,8 @@
     <ClInclude Include="Sources\Common\GameObject\GameObject.h" />
     <ClInclude Include="Sources\Common\SceneBase\SceneBase.h" />
     <ClInclude Include="Sources\Game\Bullet\Bullet.h" />
+    <ClInclude Include="Sources\Game\Enemy\EnemyA.h" />
+    <ClInclude Include="Sources\Game\Enemy\EnemyManager.h" />
     <ClInclude Include="Sources\Game\Player\Player.h" />
     <ClInclude Include="Sources\Game\Scenes\GameScene\GameScene.h" />
     <ClInclude Include="stdafx.h" />

@@ -24,6 +24,7 @@ void Player::Draw()
 void Player::Move(float deltaTime)
 {
     Vec2 move = Vec2::Zero();
+    Vec2 virtualSize = Window::GetState().virtualSize;
     bool isMove = false;
     static double coolTime;
     // キーが押されたとき
@@ -55,7 +56,7 @@ void Player::Move(float deltaTime)
     }
     if (coolTime > 0)
     {
-        coolTime -= Scene::DeltaTime();
+        coolTime -= deltaTime;
     }
     // プレイヤーが動いてるとき
     if (isMove)
@@ -71,13 +72,13 @@ void Player::Move(float deltaTime)
         {
             _position->x = _size;
         }
-        if (_position->y >= Window::GetState().virtualSize.y - _size)
+        if (_position->y >= virtualSize.y - _size)
         {
-            _position->y = Window::GetState().virtualSize.y - _size;
+            _position->y = virtualSize.y - _size;
         }
-        if (_position->x >= Window::GetState().virtualSize.x - _size)
+        if (_position->x >= virtualSize.x - _size)
         {
-            _position->x = Window::GetState().virtualSize.x - _size;
+            _position->x = virtualSize.x - _size;
         }
     }
 }
