@@ -1,4 +1,5 @@
 ﻿#include "Bullet.h"
+#include "Common/SceneBase/SceneBase.h"
 
 bool Bullet::Init(Vec2 position)
 {
@@ -24,6 +25,7 @@ void Bullet::Move(float deltaTime)
     _position->x += kSpeed * deltaTime;
     if (_position->x >= Window::GetState().virtualSize.x + _size)
     {
-        this->~Bullet();
+        SceneBase::Destroy(this);
     }
 }
+

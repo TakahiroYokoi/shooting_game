@@ -81,6 +81,9 @@
     <Filter Include="Sources\Game\Bullet">
       <UniqueIdentifier>{c60865ba-add2-459d-b9df-ba2ecd70cd14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Game\Enemy">
+      <UniqueIdentifier>{68ac5a0f-e8a0-4d6a-aeff-efeb9479f6e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -103,6 +106,12 @@
     </ClCompile>
     <ClCompile Include="Sources\Game\Bullet\Bullet.cpp">
       <Filter>Sources\Game\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Game\Enemy\EnemyA.cpp">
+      <Filter>Sources\Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Game\Enemy\EnemyManager.cpp">
+      <Filter>Sources\Game\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -381,6 +390,12 @@
     </ClInclude>
     <ClInclude Include="Sources\Game\Bullet\Bullet.h">
       <Filter>Sources\Game\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Enemy\EnemyA.h">
+      <Filter>Sources\Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Enemy\EnemyManager.h">
+      <Filter>Sources\Game\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

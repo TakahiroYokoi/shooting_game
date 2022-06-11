@@ -1,18 +1,22 @@
 ﻿#pragma once
 #include <Siv3D.hpp>
 #include "Common/GameObject/GameObject.h"
+#include "EnemyManager.h"
 
-class Bullet : public GameObject
+class EnemyA : public GameObject
 {
 public:
+    EnemyA(std::queue<VecTime> route);
     virtual bool Init(Vec2 position) override;
     virtual void Update(float deltaTime) override;
     virtual void Draw() override;
 
 private:
-    // 弾の移動スピード
-    const float kSpeed = 1000.f;
-    // 弾のサイズ
-    float _size = 5.f;
+    std::queue<VecTime> _routeQueue;
+    float _time = -1;
+    Vec2 _vec;
+    const float kSpeed = 500.f;
+    float _size = 15.f;
     void Move(float deltaTime);
+    void Shot();
 };
