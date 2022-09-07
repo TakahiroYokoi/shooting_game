@@ -14,6 +14,6 @@ private:
     const float kSpeed = 500.f;
     const float kShotCoolTime = 0.5f;
     // プレイヤーのサイズ
-    float _size = 10.f;
+    float _size = 16.f;
     void Move(float deltaTime);
 };

@@ -1,6 +1,5 @@
 ﻿#include "EnemyA.h"
 #include "Common/SceneBase/SceneBase.h"
-#include "EnemyManager.h"
 
 EnemyA::EnemyA(std::queue<VecTime> route)
 {
@@ -23,7 +22,7 @@ void EnemyA::Update(float deltaTime)
 
 void EnemyA::Draw()
 {
-    Circle(*_position, _size).draw();
+    Circle(*_position, _size).draw(Palette::Red);
 }
 
 void EnemyA::Move(float deltaTime)
@@ -40,4 +39,8 @@ void EnemyA::Move(float deltaTime)
     {
         SceneBase::Destroy(this);
     }
+}
+
+void EnemyA::Shot(float deltaTime)
+{
 }
