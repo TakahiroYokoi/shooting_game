@@ -23,9 +23,6 @@ SceneBase::~SceneBase()
 {
     _objectList->clear();
     _destroyList->clear();
-
-    delete _objectList;
-    delete _destroyList;
 }
 
 void SceneBase::Instantiate(GameObject* gameObject, Vec2 position)
