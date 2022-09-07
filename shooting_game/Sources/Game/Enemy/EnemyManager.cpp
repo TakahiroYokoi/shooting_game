@@ -1,43 +1,61 @@
 ﻿#include "EnemyManager.h"
-#include "EnemyA.h"
+#include "EnemyA/EnemyA.h"
+#include "EnemyB/EnemyB.h"
 #include "Game/Scenes/GameScene/GameScene.h"
-
 
 EnemyManager::EnemyManager()
 {
-    const CSV csv{ U"RouteList.csv"};
-    if (not csv)
+    std::queue<VecTime>* tmpQueue = new std::queue<VecTime>;
+    const JSON json = JSON::Load(U"RouteList.json");
+    std::vector<double> buf;
+    if (not json)
     {
         throw Error
         {
-            U"Failed to load 'RouteList.csv'"
+            U"Failed to load 'RouteList.json'"
         };
     }
-    std::queue<VecTime> *tmpQueue = new std::queue<VecTime>;
-    for (size_t row = 1; row < csv.rows(); ++row)
+    ReadRoute(json,buf,tmpQueue,_routeVector);
+}
+
+
+void EnemyManager::ReadRoute(const JSON& value, std::vector<double>& buf, std::queue<VecTime>*& tmpQueue, std::vector<std::queue<VecTime>*>& _routeVector)
+{
+    switch (value.getType())
     {
-        if (csv[row][0] == U"position")
-        {
-            tmpQueue->push(VecTime(Vec2(Parse<int>(csv[row][1]), Parse<int>(csv[row][2])), 0));
-        }
-        else if (csv[row][0] == U"VecTime")
-        {
-            tmpQueue->push(VecTime(Vec2(Parse<int>(csv[row][1]), Parse<int>(csv[row][2])), Parse<float>(csv[row][3])));
-        }
-        else if (csv[row][0] == U"end")
-        {
-            tmpQueue->push(VecTime(Vec2(Parse<int>(csv[row][1]), Parse<int>(csv[row][2])), Parse<float>(csv[row][3])));
-            _routeVector.push_back(tmpQueue);
-            tmpQueue = new std::queue<VecTime>;
-        }
-        else if (csv[row][0] == U"exit"){}
-        else
-        {
-            throw Error
+        case JSONValueType::Object:
+            for (const auto& object : value)
             {
-                U"Invalid status in 'RouteList.csv'"
-            };
-        }
+                ReadRoute(object.value, buf, tmpQueue, _routeVector);
+                if (object.key != U"Route")
+                {
+                    _routeVector.push_back(tmpQueue);
+                    tmpQueue = new std::queue<VecTime>;
+                }
+            }
+            break;
+        case JSONValueType::Array:
+            for (const auto& element : value.arrayView())
+            {
+                ReadRoute(element, buf, tmpQueue, _routeVector);
+            }
+            if (buf.size() == 0)
+            {
+                break;
+            }
+            if(buf.size() == 2)
+            {
+                tmpQueue->push(VecTime(Vec2(buf[0], buf[1]), 0));
+            }
+            else
+            {
+                tmpQueue->push(VecTime(Vec2(buf[0], buf[1]), buf[2]));
+            }
+            buf.clear();
+            break;
+        case JSONValueType::Number:
+            buf.push_back(value.get<double>());
+            break;
     }
 }
 
@@ -48,15 +66,23 @@ void EnemyManager::AlwaysUpdate(float deltaTime)
 
 void EnemyManager::Spawn(float deltaTime)
 {
-    int route = Random<int>(_routeVector.size() - 1);
-    std::queue<VecTime> routeQueue = *_routeVector[route];
+    int r = Random<int>(_routeVector.size() - 1);
+    std::queue<VecTime> routeQueue = *_routeVector[r];
     _enemyASpawnPoint = routeQueue.front()._vec;
     routeQueue.pop();
     static float coolTime = 0;
     if (coolTime <= 0)
     {
-        EnemyA *enemyA = new EnemyA(routeQueue);
-        GameScene::Instantiate(enemyA,_enemyASpawnPoint);
+        r = Random<int>(1);
+        if (r == 0) {
+            EnemyA *enemyA = new EnemyA(routeQueue);
+            GameScene::Instantiate(enemyA,_enemyASpawnPoint);
+        }
+        else if (r == 1)
+        {
+            EnemyB* enemyB = new EnemyB(routeQueue);
+            GameScene::Instantiate(enemyB, _enemyASpawnPoint);
+        }
         coolTime = kSpawnCoolTime;
     }
     coolTime -= deltaTime;
@@ -67,4 +93,3 @@ VecTime::VecTime(Vec2 vecIn, float timeIn)
     _vec = vecIn;
     _time = timeIn;
 }
-

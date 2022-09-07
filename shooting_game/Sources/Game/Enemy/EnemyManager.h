@@ -21,5 +21,6 @@ private:
     const float kSpawnCoolTime = 2.5;
     Vec2 _enemyASpawnPoint;
     void Spawn(float deltaTime);
+    void ReadRoute(const JSON&, std::vector<double>&, std::queue<VecTime>*&, std::vector<std::queue<VecTime>*>&);
 };
 
