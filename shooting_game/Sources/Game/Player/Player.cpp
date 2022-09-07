@@ -82,4 +82,3 @@ void Player::Move(float deltaTime)
         }
     }
 }
-

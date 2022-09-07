@@ -1,6 +1,5 @@
 ﻿#include "EnemyManager.h"
-#include "EnemyA/EnemyA.h"
-#include "EnemyB/EnemyB.h"
+#include "EnemyA.h"
 #include "Game/Scenes/GameScene/GameScene.h"
 
 EnemyManager::EnemyManager()
@@ -17,7 +16,6 @@ EnemyManager::EnemyManager()
     }
     ReadRoute(json,buf,tmpQueue,_routeVector);
 }
-
 
 void EnemyManager::ReadRoute(const JSON& value, std::vector<double>& buf, std::queue<VecTime>*& tmpQueue, std::vector<std::queue<VecTime>*>& _routeVector)
 {
@@ -73,15 +71,10 @@ void EnemyManager::Spawn(float deltaTime)
     static float coolTime = 0;
     if (coolTime <= 0)
     {
-        r = Random<int>(1);
+        r = 0;
         if (r == 0) {
             EnemyA *enemyA = new EnemyA(routeQueue);
             GameScene::Instantiate(enemyA,_enemyASpawnPoint);
-        }
-        else if (r == 1)
-        {
-            EnemyB* enemyB = new EnemyB(routeQueue);
-            GameScene::Instantiate(enemyB, _enemyASpawnPoint);
         }
         coolTime = kSpawnCoolTime;
     }
