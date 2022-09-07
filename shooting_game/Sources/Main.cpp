@@ -1,6 +1,7 @@
 ﻿#include <Siv3D.hpp>
 
 #include "Common/SceneBase/SceneBase.h"
+#include "Game/Scenes/TitleScene/TitleScene.h"
 #include "Game/Scenes/GameScene/GameScene.h"
 
 void Main()
@@ -29,6 +30,7 @@ void Main()
 
     TSceneManager sceneManager;
     sceneManager
+        .add<TitleScene>("TitleScene")
         .add<GameScene>("GameScene")
         .setFadeColor(ColorF{ 1. });
 
