@@ -2,6 +2,8 @@
 #include "EnemyBase.h"
 #include "Game/Scenes/GameScene/GameScene.h"
 #include <functional>
+#include "Game/Enemy/EnemyA/EnemyA.h"
+#include "Game/Enemy/EnemyB/EnemyB.h"
 
 EnemyManager::EnemyManager(Vec2* playerPosition)
 {

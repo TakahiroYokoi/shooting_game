@@ -24,6 +24,3 @@ private:
     Vec2 _vec;
     const float kSpeed = 500.f;
 };
-
-#include "Game/Enemy/EnemyA/EnemyA.h"
-#include "Game/Enemy/EnemyB/EnemyB.h"

@@ -1,7 +1,8 @@
 ﻿#include "EnemyBullet.h"
 #include "Common/SceneBase/SceneBase.h"
 
-EnemyBullet::EnemyBullet(Vec2* target) {
+EnemyBullet::EnemyBullet(Vec2* target)
+{
     _target = *target;
 }
 
@@ -11,6 +12,7 @@ bool EnemyBullet::Init(Vec2 position)
     {
         return false;
     }
+    _move = _target - *_position;
     return true;
 }
 
@@ -27,9 +29,6 @@ void EnemyBullet::Draw()
 void EnemyBullet::Move(float deltaTime)
 {
     Vec2 virtualSize = Window::GetState().virtualSize;
-    if (_move == Vec2::Zero()) {
-        _move = _target - *_position;
-    }
     *_position += _move.normalized() * kSpeed * deltaTime;
     if (_position->x >= virtualSize.x + _size ||
         _position->x <= _size ||

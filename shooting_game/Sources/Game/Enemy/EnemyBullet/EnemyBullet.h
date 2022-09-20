@@ -17,5 +17,5 @@ protected:
 
 private:
     Vec2 _target;
-    Vec2 _move = Vec2::Zero();
+    Vec2 _move;
 };
