@@ -228,6 +228,7 @@
   <ItemGroup>
     <ClInclude Include="Sources\Common\GameObject\GameObject.h" />
     <ClInclude Include="Sources\Common\SceneBase\SceneBase.h" />
+    <ClInclude Include="Sources\Common\Singleton.h" />
     <ClInclude Include="Sources\Game\Bullet\Bullet.h" />
     <ClInclude Include="Sources\Game\Enemy\EnemyA\EnemyA.h" />
     <ClInclude Include="Sources\Game\Enemy\EnemyBullet\EnemyBullet.h" />
