@@ -448,5 +448,8 @@
     <ClInclude Include="Sources\Game\Enemy\EnemyBullet\EnemyBullet.h">
       <Filter>Sources\Game\Enemy\EnemyBullet</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Common\Singleton.h">
+      <Filter>Sources\Common</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
