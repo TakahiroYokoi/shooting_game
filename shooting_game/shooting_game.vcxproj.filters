@@ -90,6 +90,15 @@
     <Filter Include="Sources\Game\Enemy">
       <UniqueIdentifier>{68ac5a0f-e8a0-4d6a-aeff-efeb9479f6e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Game\Enemy\EnemyA">
+      <UniqueIdentifier>{7095463f-1206-4b66-89b5-17dda734b375}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Game\Enemy\EnemyB">
+      <UniqueIdentifier>{d61e11f9-bd5a-41fa-a030-9e9c3a7f1fa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Game\Enemy\EnemyBullet">
+      <UniqueIdentifier>{dc05d289-bbff-4230-9010-02e875b1b120}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -122,11 +131,20 @@
     <ClCompile Include="Sources\Game\UI\Text.cpp">
       <Filter>Sources\Game\UI</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Game\Enemy\EnemyA.cpp">
-      <Filter>Sources\Game\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\Game\Enemy\EnemyManager.cpp">
       <Filter>Sources\Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Game\Enemy\EnemyBase.cpp">
+      <Filter>Sources\Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Game\Enemy\EnemyA\EnemyA.cpp">
+      <Filter>Sources\Game\Enemy\EnemyA</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Game\Enemy\EnemyB\EnemyB.cpp">
+      <Filter>Sources\Game\Enemy\EnemyB</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Game\Enemy\EnemyBullet\EnemyBullet.cpp">
+      <Filter>Sources\Game\Enemy\EnemyBullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -415,11 +433,20 @@
     <ClInclude Include="Sources\Game\UI\Text.h">
       <Filter>Sources\Game\UI</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Game\Enemy\EnemyA.h">
-      <Filter>Sources\Game\Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Game\Enemy\EnemyManager.h">
       <Filter>Sources\Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Enemy\EnemyBase.h">
+      <Filter>Sources\Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Enemy\EnemyA\EnemyA.h">
+      <Filter>Sources\Game\Enemy\EnemyA</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Enemy\EnemyB\EnemyB.h">
+      <Filter>Sources\Game\Enemy\EnemyB</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Enemy\EnemyBullet\EnemyBullet.h">
+      <Filter>Sources\Game\Enemy\EnemyBullet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

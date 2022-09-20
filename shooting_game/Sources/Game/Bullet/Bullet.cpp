@@ -28,4 +28,3 @@ void Bullet::Move(float deltaTime)
         SceneBase::Destroy(this);
     }
 }
-

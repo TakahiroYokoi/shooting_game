@@ -1,10 +1,12 @@
 ﻿#include "EnemyManager.h"
-#include "EnemyA.h"
+#include "EnemyBase.h"
 #include "Game/Scenes/GameScene/GameScene.h"
+#include <functional>
 
-EnemyManager::EnemyManager()
+EnemyManager::EnemyManager(Vec2* playerPosition)
 {
-    std::queue<VecTime>* tmpQueue = new std::queue<VecTime>;
+    _playerPosition = playerPosition;
+    std::queue<VecTime>* tmpQueue = new std::queue<VecTime>();
     const JSON json = JSON::Load(U"RouteList.json");
     std::vector<double> buf;
     if (not json)
@@ -15,6 +17,7 @@ EnemyManager::EnemyManager()
         };
     }
     ReadRoute(json,buf,tmpQueue,_routeVector);
+    _enemyList = std::list<EnemyBase*>();
 }
 
 void EnemyManager::ReadRoute(const JSON& value, std::vector<double>& buf, std::queue<VecTime>*& tmpQueue, std::vector<std::queue<VecTime>*>& _routeVector)
@@ -28,7 +31,7 @@ void EnemyManager::ReadRoute(const JSON& value, std::vector<double>& buf, std::q
                 if (object.key != U"Route")
                 {
                     _routeVector.push_back(tmpQueue);
-                    tmpQueue = new std::queue<VecTime>;
+                    tmpQueue = new std::queue<VecTime>();
                 }
             }
             break;
@@ -57,9 +60,15 @@ void EnemyManager::ReadRoute(const JSON& value, std::vector<double>& buf, std::q
     }
 }
 
-void EnemyManager::AlwaysUpdate(float deltaTime)
+void EnemyManager::Update(float deltaTime)
 {
     Spawn(deltaTime);
+
+    for (auto enemy : _enemyList)
+    {
+        enemy->Move(deltaTime);
+        enemy->Shot(deltaTime,_playerPosition);
+    }
 }
 
 void EnemyManager::Spawn(float deltaTime)
@@ -69,13 +78,23 @@ void EnemyManager::Spawn(float deltaTime)
     _enemyASpawnPoint = routeQueue.front()._vec;
     routeQueue.pop();
     static float coolTime = 0;
+    EnemyBase* enemy;
     if (coolTime <= 0)
     {
-        r = 0;
-        if (r == 0) {
-            EnemyA *enemyA = new EnemyA(routeQueue);
-            GameScene::Instantiate(enemyA,_enemyASpawnPoint);
+        r = Random<int>(kNumOfEnemyType-1);
+        if (r == 0)
+        {
+            enemy = new EnemyA(routeQueue);
         }
+        else
+        {
+            enemy = new EnemyB(routeQueue);
+        }
+        enemy->SetDestroy([&](EnemyBase* destroyEnemy) {
+            _enemyList.remove(destroyEnemy);
+            });
+        _enemyList.push_back(enemy);
+        GameScene::Instantiate(enemy, _enemyASpawnPoint);
         coolTime = kSpawnCoolTime;
     }
     coolTime -= deltaTime;
