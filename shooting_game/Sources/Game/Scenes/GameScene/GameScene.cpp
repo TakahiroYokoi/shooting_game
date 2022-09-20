@@ -4,8 +4,8 @@ GameScene::GameScene(const InitData& init):
     SceneBase(init)
 {
     _player = new Player();
-    _enemyManager = new EnemyManager();
     Instantiate(_player, Vec2(100, 100));
+    _enemyManager = new EnemyManager(_player->_position);
     Instantiate(_enemyManager, Vec2(0, 0));
 }
 

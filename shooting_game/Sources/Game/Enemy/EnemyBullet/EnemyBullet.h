@@ -1,24 +1,21 @@
 ﻿#pragma once
 #include <Siv3D.hpp>
 #include "Common/GameObject/GameObject.h"
-#include "Game/Enemy/EnemyManager.h"
 
-class EnemyA : public GameObject
+class EnemyBullet : public GameObject
 {
 public:
-    EnemyA(std::queue<VecTime> route);
+    EnemyBullet(Vec2*);
     virtual bool Init(Vec2 position) override;
     virtual void Update(float deltaTime) override;
     virtual void Draw() override;
 
 protected:
-    std::queue<VecTime> _routeQueue;
-    float _size = 15.f;
+    const float kSpeed = 1000.f;
+    float _size = 5.f;
     void Move(float deltaTime);
 
 private:
-    float _time = -1;
-    Vec2 _vec;
-    const float kSpeed = 500.f;
-    virtual void Shot(float deltaTime);
+    Vec2 _target;
+    Vec2 _move = Vec2::Zero();
 };
