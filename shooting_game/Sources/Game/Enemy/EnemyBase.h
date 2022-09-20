@@ -10,7 +10,7 @@ public:
     virtual bool Init(Vec2 position) override;
     virtual void Draw() override;
     virtual void Shot(float deltaTime, Vec2* playerPosiotion);
-	virtual void OnDestroy();
+    virtual void OnDestroy();
     void Move(float deltaTime);
     void SetDestroy(std::function<void(EnemyBase*)>);
 

@@ -12,7 +12,7 @@ bool EnemyBullet::Init(Vec2 position)
     {
         return false;
     }
-    _move = _target - *_position;
+    _move = (_target - *_position).normalized();
     return true;
 }
 
@@ -29,7 +29,7 @@ void EnemyBullet::Draw()
 void EnemyBullet::Move(float deltaTime)
 {
     Vec2 virtualSize = Window::GetState().virtualSize;
-    *_position += _move.normalized() * kSpeed * deltaTime;
+    *_position += _move * kSpeed * deltaTime;
     if (_position->x >= virtualSize.x + _size ||
         _position->x <= _size ||
         _position->y >= virtualSize.y + _size ||

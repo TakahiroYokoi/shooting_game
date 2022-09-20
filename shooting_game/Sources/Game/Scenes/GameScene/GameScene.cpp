@@ -5,8 +5,12 @@ GameScene::GameScene(const InitData& init):
 {
     _player = new Player();
     Instantiate(_player, Vec2(100, 100));
-    _enemyManager = new EnemyManager(_player->_position);
-    Instantiate(_enemyManager, Vec2(0, 0));
+    EnemyManager::Instance().Init(_player->_position);
+}
+
+void GameScene::Update(float deltaTime)
+{
+    EnemyManager::Instance().Update(deltaTime);
 }
 
 GameScene::~GameScene()
