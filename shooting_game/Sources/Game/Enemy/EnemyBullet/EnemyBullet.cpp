@@ -31,10 +31,20 @@ void EnemyBullet::Move(float deltaTime)
     Vec2 virtualSize = Window::GetState().virtualSize;
     *_position += _move * kSpeed * deltaTime;
     if (_position->x >= virtualSize.x + _size ||
-        _position->x <= _size ||
+        _position->x <= -_size ||
         _position->y >= virtualSize.y + _size ||
-        _position->y <= _size)
+        _position->y <= -_size)
     {
         SceneBase::Destroy(this);
+    }
+}
+
+void EnemyBullet::SetDestroy(std::function<void(EnemyBullet*)> func) {
+    _destroy = func;
+}
+
+void EnemyBullet::OnDestroy() {
+    if (_destroy != nullptr) {
+        _destroy(this);
     }
 }

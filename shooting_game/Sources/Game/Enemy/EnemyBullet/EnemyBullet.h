@@ -9,6 +9,8 @@ public:
     virtual bool Init(Vec2 position) override;
     virtual void Update(float deltaTime) override;
     virtual void Draw() override;
+    virtual void OnDestroy();
+    void SetDestroy(std::function<void(EnemyBullet*)> func);
 
 protected:
     const float kSpeed = 1000.f;
@@ -18,4 +20,5 @@ protected:
 private:
     Vec2 _target;
     Vec2 _move;
+    std::function<void(EnemyBullet*)> _destroy;
 };

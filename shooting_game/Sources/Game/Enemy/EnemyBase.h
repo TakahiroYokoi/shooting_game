@@ -2,6 +2,7 @@
 #include <Siv3D.hpp>
 #include "Common/GameObject/GameObject.h"
 #include "Game/Enemy/EnemyManager.h"
+#include "Game/Enemy/EnemyBullet/EnemyBullet.h"
 
 class EnemyBase : public GameObject
 {
@@ -17,6 +18,7 @@ public:
 protected:
     std::queue<VecTime> _routeQueue;
     float _size = 15.f;
+    std::list<EnemyBullet*> _bulletList;
 
 private:
     std::function<void(EnemyBase*)> _destroy;
