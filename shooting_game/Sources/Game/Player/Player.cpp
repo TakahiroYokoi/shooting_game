@@ -52,6 +52,11 @@ void Player::Move(float deltaTime)
     {
         coolTime = kShotCoolTime;
         Bullet* bullet = new Bullet();
+        bullet->SetDestroy([&](Bullet* destroyBullet)
+            {
+            _bulletList.remove(destroyBullet);
+            });
+        _bulletList.push_back(bullet);
         GameScene::Instantiate(bullet,*_position);
     }
     if (coolTime > 0)
@@ -81,4 +86,9 @@ void Player::Move(float deltaTime)
             _position->x = virtualSize.x - _size;
         }
     }
+}
+
+std::list<Bullet*> Player::GetBulletList()
+{
+    return _bulletList;
 }
