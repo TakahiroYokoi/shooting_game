@@ -29,6 +29,10 @@ void EnemyB::Shot(float deltaTime,Vec2* playerPosition)
         _coolTime = kShotCoolTime;
         EnemyBullet* bullet = new EnemyBullet(playerPosition);
         GameScene::Instantiate(bullet, *_position);
+        bullet->SetDestroy([&](EnemyBullet* destroyBullet) {
+            _bulletList.remove(destroyBullet);
+            });
+        _bulletList.push_back(bullet);
     }
     else
     {

@@ -1,9 +1,10 @@
 ﻿#include "EnemyManager.h"
-#include "EnemyBase.h"
 #include "Game/Scenes/GameScene/GameScene.h"
 #include <functional>
+#include "Game/Enemy/EnemyA/EnemyA.h"
+#include "Game/Enemy/EnemyB/EnemyB.h"
 
-EnemyManager::EnemyManager(Vec2* playerPosition)
+void EnemyManager::Init(Vec2* playerPosition)
 {
     _playerPosition = playerPosition;
     std::queue<VecTime>* tmpQueue = new std::queue<VecTime>();

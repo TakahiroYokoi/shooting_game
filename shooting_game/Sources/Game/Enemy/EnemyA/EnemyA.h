@@ -10,4 +10,3 @@ public:
     virtual bool Init(Vec2 position) override;
     virtual void Draw() override;
 };
-#pragma once

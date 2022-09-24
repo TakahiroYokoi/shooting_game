@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "Common/GameObject/GameObject.h"
+#include "Common/Singleton.h"
 #include <vector>
 #include <queue>
 
@@ -13,11 +14,11 @@ public:
     VecTime(Vec2 vecIn, float timeIn);
 };
 
-class EnemyManager : public GameObject
+class EnemyManager : public Singleton<EnemyManager>
 {
 public:
-    EnemyManager(Vec2*);
-    virtual void Update(float deltaTime) override;
+    void Init(Vec2* playerPosition);
+    void Update(float deltaTime);
 
 private:
     std::vector<std::queue<VecTime>*> _routeVector;
