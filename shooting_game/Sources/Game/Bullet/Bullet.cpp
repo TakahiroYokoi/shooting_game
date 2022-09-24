@@ -20,6 +20,13 @@ void Bullet::Draw()
     Circle(*_position, _size).draw();
 }
 
+void Bullet::OnDestroy()
+{
+    if (_destroy != nullptr) {
+        _destroy(this);
+    }
+}
+
 void Bullet::Move(float deltaTime)
 {
     _position->x += kSpeed * deltaTime;
@@ -27,4 +34,8 @@ void Bullet::Move(float deltaTime)
     {
         SceneBase::Destroy(this);
     }
+}
+
+void Bullet::SetDestroy(std::function<void(Bullet*)> func) {
+    _destroy = func;
 }
