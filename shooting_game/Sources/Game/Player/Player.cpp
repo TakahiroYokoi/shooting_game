@@ -8,17 +8,19 @@ bool Player::Init(Vec2 position)
     {
         return false;
     }
+    _circle = Circle(*_position, _size);
     return true;
 }
 
 void Player::Update(float deltaTime)
 {
     Move(deltaTime);
+    _circle = Circle(*_position, _size);
 }
 
 void Player::Draw()
 {
-    Circle(*_position, _size).draw();
+    _circle.draw();
 }
 
 void Player::Move(float deltaTime)
@@ -86,6 +88,11 @@ void Player::Move(float deltaTime)
             _position->x = virtualSize.x - _size;
         }
     }
+}
+
+Circle Player::GetCircle()
+{
+    return _circle;
 }
 
 std::list<Bullet*> Player::GetBulletList()

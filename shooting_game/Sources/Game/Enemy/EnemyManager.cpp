@@ -4,9 +4,9 @@
 #include "Game/Enemy/EnemyA/EnemyA.h"
 #include "Game/Enemy/EnemyB/EnemyB.h"
 
-void EnemyManager::Init(Vec2* playerPosition)
+void EnemyManager::Init(Player* player)
 {
-    _playerPosition = playerPosition;
+    _player = player;
     std::queue<VecTime>* tmpQueue = new std::queue<VecTime>();
     const JSON json = JSON::Load(U"RouteList.json");
     std::vector<double> buf;
@@ -64,12 +64,16 @@ void EnemyManager::ReadRoute(const JSON& value, std::vector<double>& buf, std::q
 void EnemyManager::Update(float deltaTime)
 {
     Spawn(deltaTime);
+    Collison();
 
     for (auto enemy : _enemyList)
     {
         enemy->Move(deltaTime);
-        enemy->Shot(deltaTime,_playerPosition);
+        enemy->Shot(deltaTime,_player->_position);
     }
+    ClearPrint();
+    Print << U"Hit: " <<_pHitCount;
+    Print << U"Score: " << _score;
 }
 
 void EnemyManager::Spawn(float deltaTime)
@@ -99,6 +103,35 @@ void EnemyManager::Spawn(float deltaTime)
         coolTime = kSpawnCoolTime;
     }
     coolTime -= deltaTime;
+}
+
+void EnemyManager::Collison()
+{
+    for (auto enemy : _enemyList)
+    {
+        if (_player->GetCircle().intersects(enemy->GetCircle()))
+        {
+            enemy->Hit();
+            _pHitCount++;
+        }
+        for (auto eBullet : enemy->GetBulletList())
+        {
+            if (_player->GetCircle().intersects(eBullet->GetCircle()))
+            {
+                eBullet->Hit();
+                _pHitCount++;
+            }
+        }
+        for (auto pBullet : _player->GetBulletList())
+        {
+            if (pBullet->GetCircle().intersects(enemy->GetCircle()))
+            {
+                enemy->Hit();
+                pBullet->Hit();
+                _score++;
+            }
+        }
+    }
 }
 
 VecTime::VecTime(Vec2 vecIn, float timeIn)

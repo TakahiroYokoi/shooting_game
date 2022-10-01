@@ -11,6 +11,8 @@ public:
     virtual void Draw() override;
     virtual void OnDestroy();
     void SetDestroy(std::function<void(EnemyBullet*)> func);
+    Circle GetCircle();
+    void Hit();
 
 protected:
     const float kSpeed = 1000.f;
@@ -20,5 +22,6 @@ protected:
 private:
     Vec2 _target;
     Vec2 _move;
+    Circle _circle;
     std::function<void(EnemyBullet*)> _destroy;
 };

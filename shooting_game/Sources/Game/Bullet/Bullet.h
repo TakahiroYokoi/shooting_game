@@ -10,12 +10,15 @@ public:
     virtual void Draw() override;
     virtual void OnDestroy();
     void SetDestroy(std::function<void(Bullet*)>);
+    Circle GetCircle();
+    void Hit();
 
 protected:
     // 弾の移動スピード
     const float kSpeed = 1000.f;
     // 弾のサイズ
     float _size = 5.f;
+    Circle _circle;
     virtual void Move(float deltaTime);
 
 private:
