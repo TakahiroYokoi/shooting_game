@@ -120,6 +120,7 @@
     <ClCompile Include="Sources\Game\Enemy\EnemyA\EnemyA.cpp" />
     <ClCompile Include="Sources\Game\Enemy\EnemyBullet\EnemyBullet.cpp" />
     <ClCompile Include="Sources\Game\Enemy\EnemyB\EnemyB.cpp" />
+    <ClCompile Include="Sources\Game\Enemy\EnemyC\EnemyC.cpp" />
     <ClCompile Include="Sources\Game\Enemy\EnemyManager.cpp" />
     <ClCompile Include="Sources\Game\Enemy\EnemyBase.cpp" />
     <ClCompile Include="Sources\Game\Player\Player.cpp" />
@@ -233,6 +234,7 @@
     <ClInclude Include="Sources\Game\Enemy\EnemyA\EnemyA.h" />
     <ClInclude Include="Sources\Game\Enemy\EnemyBullet\EnemyBullet.h" />
     <ClInclude Include="Sources\Game\Enemy\EnemyB\EnemyB.h" />
+    <ClInclude Include="Sources\Game\Enemy\EnemyC\EnemyC.h" />
     <ClInclude Include="Sources\Game\Enemy\EnemyManager.h" />
     <ClInclude Include="Sources\Game\Enemy\EnemyBase.h" />
     <ClInclude Include="Sources\Game\Player\Player.h" />
