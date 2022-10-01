@@ -99,6 +99,9 @@
     <Filter Include="Sources\Game\Enemy\EnemyBullet">
       <UniqueIdentifier>{dc05d289-bbff-4230-9010-02e875b1b120}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Game\Enemy\EnemyC">
+      <UniqueIdentifier>{68d9bbd8-0e78-46a1-bcc9-3ab70d895d44}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -145,6 +148,9 @@
     </ClCompile>
     <ClCompile Include="Sources\Game\Enemy\EnemyBullet\EnemyBullet.cpp">
       <Filter>Sources\Game\Enemy\EnemyBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Game\Enemy\EnemyC\EnemyC.cpp">
+      <Filter>Sources\Game\Enemy\EnemyC</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -450,6 +456,9 @@
     </ClInclude>
     <ClInclude Include="Sources\Common\Singleton.h">
       <Filter>Sources\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Enemy\EnemyC\EnemyC.h">
+      <Filter>Sources\Game\Enemy\EnemyC</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

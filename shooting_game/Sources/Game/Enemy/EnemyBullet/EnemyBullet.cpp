@@ -1,9 +1,9 @@
 ﻿#include "EnemyBullet.h"
 #include "Common/SceneBase/SceneBase.h"
 
-EnemyBullet::EnemyBullet(Vec2* target)
+EnemyBullet::EnemyBullet(Vec2 move)
 {
-    _target = *target;
+    _move = move;
 }
 
 bool EnemyBullet::Init(Vec2 position)
@@ -12,7 +12,6 @@ bool EnemyBullet::Init(Vec2 position)
     {
         return false;
     }
-    _move = (_target - *_position).normalized();
     return true;
 }
 
