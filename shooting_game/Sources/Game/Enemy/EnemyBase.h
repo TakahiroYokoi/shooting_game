@@ -9,7 +9,7 @@ class EnemyBase : public GameObject
 public:
     EnemyBase(std::queue<VecTime> route);
     virtual bool Init(Vec2 position) override;
-    virtual void Update(float DeltaTime) override;
+    virtual void Update(float deltaTime) override;
     virtual void Draw() override;
     virtual void Shot(float deltaTime, Vec2* playerPosiotion);
     virtual void OnDestroy();

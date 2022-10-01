@@ -9,7 +9,7 @@ void EnemyManager::Init(Player* player)
     _player = player;
     std::queue<VecTime>* tmpQueue = new std::queue<VecTime>();
     const JSON json = JSON::Load(U"RouteList.json");
-    std::vector<double> buf;
+    std::vector<float> buf;
     if (not json)
     {
         throw Error
@@ -17,18 +17,18 @@ void EnemyManager::Init(Player* player)
             U"Failed to load 'RouteList.json'"
         };
     }
-    ReadRoute(json,buf,tmpQueue,_routeVector);
+    ReadRoute(json,buf,tmpQueue);
     _enemyList = std::list<EnemyBase*>();
 }
 
-void EnemyManager::ReadRoute(const JSON& value, std::vector<double>& buf, std::queue<VecTime>*& tmpQueue, std::vector<std::queue<VecTime>*>& _routeVector)
+void EnemyManager::ReadRoute(const JSON& value, std::vector<float>& buf, std::queue<VecTime>*& tmpQueue)
 {
     switch (value.getType())
     {
         case JSONValueType::Object:
             for (const auto& object : value)
             {
-                ReadRoute(object.value, buf, tmpQueue, _routeVector);
+                ReadRoute(object.value, buf, tmpQueue);
                 if (object.key != U"Route")
                 {
                     _routeVector.push_back(tmpQueue);
@@ -39,7 +39,7 @@ void EnemyManager::ReadRoute(const JSON& value, std::vector<double>& buf, std::q
         case JSONValueType::Array:
             for (const auto& element : value.arrayView())
             {
-                ReadRoute(element, buf, tmpQueue, _routeVector);
+                ReadRoute(element, buf, tmpQueue);
             }
             if (buf.size() == 0)
             {
@@ -56,7 +56,7 @@ void EnemyManager::ReadRoute(const JSON& value, std::vector<double>& buf, std::q
             buf.clear();
             break;
         case JSONValueType::Number:
-            buf.push_back(value.get<double>());
+            buf.push_back(value.get<float>());
             break;
     }
 }
@@ -78,7 +78,7 @@ void EnemyManager::Update(float deltaTime)
 
 void EnemyManager::Spawn(float deltaTime)
 {
-    int r = Random<int>(_routeVector.size() - 1);
+    size_t r = Random<size_t>(_routeVector.size() - 1);
     std::queue<VecTime> routeQueue = *_routeVector[r];
     _enemyASpawnPoint = routeQueue.front()._vec;
     routeQueue.pop();

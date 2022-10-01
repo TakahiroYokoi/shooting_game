@@ -16,9 +16,10 @@ bool EnemyBase::Init(Vec2 position)
     return true;
 }
 
-void EnemyBase::Update(float DeltaTime)
+void EnemyBase::Update(float deltaTime)
 {
     _circle = Circle(*_position, _size);
+    deltaTime;
 }
 
 void EnemyBase::Draw()
@@ -50,6 +51,8 @@ void EnemyBase::Move(float deltaTime)
 
 void EnemyBase::Shot(float deltaTime, Vec2* playerPosition)
 {
+    deltaTime;
+    playerPosition;
 }
 
 void EnemyBase::SetDestroy(std::function<void(EnemyBase*)> func)

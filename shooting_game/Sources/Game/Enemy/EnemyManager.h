@@ -34,7 +34,7 @@ private:
     int _score = 0;
 
     void Spawn(float deltaTime);
-    void ReadRoute(const JSON&, std::vector<double>&, std::queue<VecTime>*&, std::vector<std::queue<VecTime>*>&);
+    void ReadRoute(const JSON& value, std::vector<float>& buf, std::queue<VecTime>*& tmpQueue);
     void Collison();
 };
 
