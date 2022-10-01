@@ -18,5 +18,4 @@ void GameScene::Update(float deltaTime)
 GameScene::~GameScene()
 {
     delete _player;
-    delete _enemyManager;
 }
