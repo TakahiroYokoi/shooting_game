@@ -16,9 +16,14 @@ bool EnemyBase::Init(Vec2 position)
     return true;
 }
 
+void EnemyBase::Update(float DeltaTime)
+{
+    _circle = Circle(*_position, _size);
+}
+
 void EnemyBase::Draw()
 {
-    Circle(*_position, _size).draw(Palette::Red);
+    _circle.draw(Palette::Red);
 }
 
 void EnemyBase::OnDestroy() {
@@ -47,6 +52,22 @@ void EnemyBase::Shot(float deltaTime, Vec2* playerPosition)
 {
 }
 
-void EnemyBase::SetDestroy(std::function<void(EnemyBase*)> func) {
+void EnemyBase::SetDestroy(std::function<void(EnemyBase*)> func)
+{
     _destroy = func;
+}
+
+Circle EnemyBase::GetCircle()
+{
+    return _circle;
+}
+
+std::list<EnemyBullet*> EnemyBase::GetBulletList()
+{
+    return _bulletList;
+}
+
+void EnemyBase::Hit()
+{
+    SceneBase::Destroy(this);
 }

@@ -13,11 +13,12 @@ bool Bullet::Init(Vec2 position)
 void Bullet::Update(float deltaTime)
 {
     Move(deltaTime);
+    _circle = Circle(*_position, _size);
 }
 
 void Bullet::Draw()
 {
-    Circle(*_position, _size).draw();
+    _circle.draw();
 }
 
 void Bullet::OnDestroy()
@@ -38,4 +39,14 @@ void Bullet::Move(float deltaTime)
 
 void Bullet::SetDestroy(std::function<void(Bullet*)> func) {
     _destroy = func;
+}
+
+Circle Bullet::GetCircle()
+{
+    return _circle;
+}
+
+void Bullet::Hit()
+{
+    SceneBase::Destroy(this);
 }

@@ -19,11 +19,12 @@ bool EnemyBullet::Init(Vec2 position)
 void EnemyBullet::Update(float deltaTime)
 {
     Move(deltaTime);
+    _circle = Circle(*_position, _size);
 }
 
 void EnemyBullet::Draw()
 {
-    Circle(*_position, _size).draw();
+    _circle.draw();
 }
 
 void EnemyBullet::Move(float deltaTime)
@@ -39,12 +40,24 @@ void EnemyBullet::Move(float deltaTime)
     }
 }
 
-void EnemyBullet::SetDestroy(std::function<void(EnemyBullet*)> func) {
+void EnemyBullet::SetDestroy(std::function<void(EnemyBullet*)> func)
+{
     _destroy = func;
 }
 
-void EnemyBullet::OnDestroy() {
+void EnemyBullet::OnDestroy()
+{
     if (_destroy != nullptr) {
         _destroy(this);
     }
+}
+
+Circle EnemyBullet::GetCircle()
+{
+    return _circle;
+}
+
+void EnemyBullet::Hit()
+{
+    SceneBase::Destroy(this);
 }

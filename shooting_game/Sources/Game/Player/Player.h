@@ -10,7 +10,7 @@ public:
     virtual void Update(float deltaTime) override;
     virtual void Draw() override;
     std::list<Bullet*> GetBulletList();
-
+    Circle GetCircle();
 
 private:
     // プレイヤーの移動スピード
@@ -19,6 +19,7 @@ private:
     // プレイヤーのサイズ
     float _size = 16.f;
     std::list<Bullet*> _bulletList;
+    Circle _circle;
 
     void Move(float deltaTime);
 };
