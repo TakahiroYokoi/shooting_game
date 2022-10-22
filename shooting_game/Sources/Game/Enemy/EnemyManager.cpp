@@ -4,6 +4,7 @@
 #include "Game/Enemy/EnemyA/EnemyA.h"
 #include "Game/Enemy/EnemyB/EnemyB.h"
 #include "Game/Enemy/EnemyC/EnemyC.h"
+#include "Game/Enemy/EnemyD/EnemyD.h"
 
 void EnemyManager::Init(Player* player)
 {
@@ -96,9 +97,13 @@ void EnemyManager::Spawn(float deltaTime)
         {
             enemy = new EnemyB(routeQueue);
         }
-        else
+        else if (r == 2)
         {
             enemy = new EnemyC(routeQueue);
+        }
+        else
+        {
+            enemy = new EnemyD(routeQueue);
         }
         enemy->SetDestroy([&](EnemyBase* destroyEnemy) {
             _enemyList.remove(destroyEnemy);

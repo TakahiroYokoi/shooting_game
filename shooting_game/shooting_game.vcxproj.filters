@@ -102,6 +102,9 @@
     <Filter Include="Sources\Game\Enemy\EnemyC">
       <UniqueIdentifier>{68d9bbd8-0e78-46a1-bcc9-3ab70d895d44}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Game\Enemy\EnemyD">
+      <UniqueIdentifier>{4dc12a0b-45bd-4b58-9e13-260d3a9fed71}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -151,6 +154,12 @@
     </ClCompile>
     <ClCompile Include="Sources\Game\Enemy\EnemyC\EnemyC.cpp">
       <Filter>Sources\Game\Enemy\EnemyC</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Game\Enemy\EnemyD\EnemyD.cpp">
+      <Filter>Sources\Game\Enemy\EnemyD</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Game\Enemy\EnemyBullet\EnemyLaser.cpp">
+      <Filter>Sources\Game\Enemy\EnemyBullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -459,6 +468,12 @@
     </ClInclude>
     <ClInclude Include="Sources\Game\Enemy\EnemyC\EnemyC.h">
       <Filter>Sources\Game\Enemy\EnemyC</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Enemy\EnemyD\EnemyD.h">
+      <Filter>Sources\Game\Enemy\EnemyD</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Enemy\EnemyBullet\EnemyLaser.h">
+      <Filter>Sources\Game\Enemy\EnemyBullet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
