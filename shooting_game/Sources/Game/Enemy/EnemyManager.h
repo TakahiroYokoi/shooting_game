@@ -24,7 +24,7 @@ public:
 private:
     std::vector<std::queue<VecTime>*> _routeVector;
     const float kSpawnCoolTime = 2.5;
-    const int kNumOfEnemyType = 3;
+    const int kNumOfEnemyType = 4;
     std::list<EnemyBase*> _enemyList;
     Vec2 _enemyASpawnPoint;
     Player* _player;
